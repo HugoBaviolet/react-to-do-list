@@ -36,37 +36,55 @@ const Todo = () => {
   }
 
   return (
-    <div>
-      <h2>To Do List!</h2>
-      <input
-        type="text"
-        value={inputValue}
-        onChange={handleOnChange}
-        placeholder="What to do!"
-      />
-      <button onClick={handleClick}>Add</button>
-      <ul>
-        {items.map((i, index) => (
-          <li key={index}>
-            {editIndex === index ? (
-              <>
-                <input
-                  type="text"
-                  value={inputValue}
-                  onChange={handleOnChange}
-                />
-                <button onClick={handleSave}>Save</button>
-              </>
-            ) : (
-              <>
-                {i}
-                <button onClick={() => handleEdit(index)}>Change</button>
-                <button onClick={() => handleDelete(index)}>Delete</button>
-              </>
-            )}
-          </li>
-        ))}
-      </ul>
+    <div className="flex justify-center items-center mt-2.5">
+      <div className="card w-96 bg-base-100 shadow-xl">
+        <div className="card-body ">
+          <h2 className="card-title">To Do List!</h2>
+          <input
+            type="text"
+            value={inputValue}
+            onChange={handleOnChange}
+            placeholder="What to do!"
+          />
+          <button className="btn btn-secondary m-1.5" onClick={handleClick}>
+            Add
+          </button>
+          <ul>
+            {items.map((i, index) => (
+              <li key={index}>
+                {editIndex === index ? (
+                  <>
+                    <input
+                      type="text"
+                      value={inputValue}
+                      onChange={handleOnChange}
+                    />
+                    <button className="btn m-1.5" onClick={handleSave}>
+                      Save
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <div className="flex items-center">{i}</div>
+                    <button
+                      className="btn btn-secondary m-1.5"
+                      onClick={() => handleEdit(index)}
+                    >
+                      Change
+                    </button>
+                    <button
+                      className="btn btn-primary m-1.5"
+                      onClick={() => handleDelete(index)}
+                    >
+                      Delete
+                    </button>
+                  </>
+                )}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
     </div>
   );
 };
